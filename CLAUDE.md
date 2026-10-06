@@ -50,5 +50,9 @@ Repo hier.
 - Workflow: Quarto- und uv-Version = lokale Version (derzeit Quarto 1.10.18,
   uv 0.11.9). Actions-Versionen vor Änderungen online prüfen, z. B.
   `git ls-remote --tags https://github.com/actions/deploy-pages.git`.
+- `just extension` klont das Repo und ruft `quarto add` mit dem lokalen Ordner
+  auf. `quarto add akornfellner/hak-quarto` würde nach
+  `_extensions/akornfellner/hak/` installieren, die Skripten erwarten aber
+  `_extensions/hak/`.
 - Neue Datei in `_extensions/hak/`: `quarto add` kopiert den ganzen Ordner, es
   ist nichts einzutragen.

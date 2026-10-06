@@ -53,8 +53,9 @@ jobs:
         with:
           version: 1.10.18
 
+      # setup-uv hat seit v8 kein Tag "v10" mehr, nur vollständige Versionen
       - name: uv installieren
-        uses: astral-sh/setup-uv@v7
+        uses: astral-sh/setup-uv@v10.2.0
         with:
           version: 0.11.9
 

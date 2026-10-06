@@ -58,7 +58,15 @@ online: online-bauen
 
 # Extension (Design, Filter, Regeln, Befehle) von GitHub aktualisieren
 extension:
-  quarto add akornfellner/hak-quarto --no-prompt
+  #!/usr/bin/env bash
+  # Holt den Stand von GitHub in einen temporären Ordner und übernimmt ihn von
+  # dort. Direkt mit "quarto add akornfellner/hak-quarto" landete die Extension
+  # in _extensions/akornfellner/hak/ statt in _extensions/hak/.
+  set -euo pipefail
+  tmp="$(mktemp -d)"
+  trap 'rm -rf "$tmp"' EXIT
+  git clone --quiet --depth 1 https://github.com/akornfellner/hak-quarto.git "$tmp/hak-quarto"
+  quarto add "$tmp/hak-quarto" --no-prompt
 
 # Extension aus dem Nachbarordner ../hak-quarto übernehmen (zum Testen von Änderungen)
 extension-lokal:

@@ -262,6 +262,9 @@ just alles
   online in einem Unterordner.
 - **Einen neuen Filter nicht nur an einer Stelle eintragen.** Er gehört in
   `_extension.yml` (HTML, Folien) und in `pdf.yml` (PDF).
+- **Die Extension nicht mit `quarto add akornfellner/hak-quarto` holen.** Das
+  legt eine zweite Kopie in `_extensions/akornfellner/` an. Immer
+  `just extension` oder `just extension-lokal`.
 - **Kein `git reset --hard` und kein `git push --force`.** Zurück geht es immer
   mit `git revert` (siehe unten).
 - **Dieses Repo nicht umbenennen oder privat schalten.** Die Skripten holen

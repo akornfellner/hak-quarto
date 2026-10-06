@@ -79,7 +79,7 @@ In `_extensions/hak/`:
 | `NN-kapitelname/` | ein Ordner pro Kapitel: `kapitel-N.qmd`, `folien-N.qmd`, Unterkapitel `_N-M-thema.qmd`, `images/` |
 | `_python/grafiken.py` | Zeichnungen dieser Klasse (holt den Stil aus `stil.py`) |
 | `CLAUDE.md` | Klasse, Adressen, Regeln nur für diese Klasse; bindet `regeln.md` ein |
-| `justfile` | bindet `hak.just` ein; Platz für Befehle nur dieser Klasse |
+| `justfile` | bindet `hak.just` ein, enthält `default` (Übersicht mit `just`); Platz für Befehle nur dieser Klasse |
 | `.github/workflows/pages.yml` | wenige Zeilen: ruft bei jedem Push den Workflow aus `hak-quarto` auf |
 | `.claude/settings.json` | erlaubt Claude den Zugriff auf `../hak-quarto` |
 | `pyproject.toml`, `uv.lock`, `.python-version` | Python-Pakete für die Grafiken |

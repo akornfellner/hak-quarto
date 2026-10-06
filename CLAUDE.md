@@ -47,6 +47,10 @@ Repo hier.
 - `quarto render --to html` rendert ohne Extension. Überall `hak-html`.
 - `hak.just` braucht just ab 1.19 (`import`). Der Repo-Name für `just online`
   kommt aus dem Ordnernamen des Skripts.
+- Der Befehl `default` (`just` ohne Befehl zeigt die Übersicht) muss im
+  `justfile` jedes Skripts stehen, nicht in `hak.just`: just nimmt als
+  Standardbefehl keinen eingebundenen Befehl („justfile contains no default
+  recipe“).
 - Workflow: Quarto- und uv-Version = lokale Version (derzeit Quarto 1.10.18,
   uv 0.11.9). Actions-Versionen vor Änderungen online prüfen, z. B.
   `git ls-remote --tags https://github.com/actions/deploy-pages.git`.

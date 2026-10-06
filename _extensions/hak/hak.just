@@ -2,13 +2,13 @@
 # Wird im justfile des Skripts eingebunden:
 #   import '_extensions/hak/hak.just'
 # Die Befehle laufen im Ordner des Skripts. Übersicht: just
+#
+# Der Befehl "default" (Übersicht) steht im justfile des Skripts: just nimmt als
+# Standardbefehl nur einen Befehl aus dem justfile selbst, keinen eingebundenen.
 
 # Name des Repos, bestimmt die Adresse der Online-Version (/hak-mam-1/).
 # Vorgabe ist der Ordnername; bei abweichendem Ordner: just repo=hak-mam-1 online
 repo := file_name(justfile_directory())
-
-default:
-  @just --list
 
 # Python-Umgebung einrichten (einmalig / nach git pull)
 sync:

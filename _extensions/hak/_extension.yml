@@ -1,0 +1,58 @@
+# Quarto-Extension "hak": gemeinsame Technik aller Mathematik-Skripten der
+# HAK/HAS Eferding (Design, Filter, Kurzbefehle, Formate).
+#
+# Formate:  hak-html      Skript als Webseite (auch Übersichtsseite der Folien)
+#           hak-revealjs  Folien
+# Das PDF verwendet das normale Format "typst" und holt seine Einstellungen aus
+# pdf.yml (ein eigenes Format "hak-typst" würde die Buchvorlage "orange-book"
+# von Quarto verdrängen).
+#
+# Einbinden in einem Skript: siehe README.md im Repo hak-quarto.
+
+title: HAK-Skript
+author: Alexander Kornfellner
+version: 1.0.0
+quarto-required: ">=1.10.0"
+
+contributes:
+  # Design (Farben, Schriften, Logos) für das ganze Projekt, also für HTML, PDF
+  # und Folien. Als Format-Einstellung würde _brand.yml nicht wirken.
+  metadata:
+    project:
+      brand: _brand.yml
+
+  # Kurzbefehle, z. B. {{< buch 1.23 1.24ab >}} für Buchbeispiele
+  shortcodes:
+    - buch.lua
+
+  formats:
+    # gilt für hak-html und hak-revealjs
+    # (Sprache, Python, Kurzbefehle und Filter stehen für das PDF noch einmal in
+    # pdf.yml – Änderungen immer an beiden Stellen)
+    common:
+      lang: de
+      number-depth: 2
+      # Python-Code (matplotlib-Grafiken) wird nie angezeigt, nur das Ergebnis
+      jupyter: python3
+      execute:
+        echo: false
+        warning: false
+      shortcodes:
+        - buch.lua
+      filters:
+        - filters/pdf-nummerierung.lua
+        - filters/deutsche-anfuehrungszeichen.lua
+        - filters/intervallklammern.lua
+        - filters/dezimalkomma.lua
+
+    html:
+      # Umschalter hell/dunkel; "brand" zuletzt, damit _brand.yml Vorrang hat
+      theme:
+        light: [cosmo, brand]
+        dark: [darkly, brand]
+      css: buchbeispiele.css
+      toc: true
+
+    revealjs:
+      slide-level: 4
+      css: buchbeispiele.css

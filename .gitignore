@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+
+# Syncthing
+.stfolder/
+.stversions/
+.syncthing.*.tmp
+~syncthing~*.tmp
+
+# Editor / System
+.DS_Store
+Thumbs.db
+*~
+*.swp
+
+# Claude Code: persönliche Einstellungen
+.claude/settings.local.json

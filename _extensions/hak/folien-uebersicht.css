@@ -1,0 +1,42 @@
+/* Übersichtsseite der Folien (_folien-uebersicht.qmd): große, am Beamer gut
+   lesbare Links, einer pro Kapitel. Farben und Schriften kommen aus _brand.yml
+   (--bs-primary, Schrift des Themes). */
+
+.folien-uebersicht {
+  margin: 2rem 0;
+}
+
+.folien-uebersicht p {
+  margin: 0 0 1rem;
+}
+
+.folien-uebersicht a {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1rem 1.4rem;
+  border: 2px solid var(--bs-primary);
+  border-radius: 0.5rem;
+  font-size: 2rem;
+  line-height: 1.2;
+  text-decoration: none;
+}
+
+.folien-uebersicht a:hover,
+.folien-uebersicht a:focus {
+  background: color-mix(in srgb, var(--bs-primary) 12%, transparent);
+}
+
+.folien-uebersicht .kapitelnummer {
+  flex: none;
+  min-width: 2.2em;
+  padding: 0.1em 0.3em;
+  border-radius: 0.35rem;
+  background: var(--bs-primary);
+  color: var(--bs-body-bg);
+  text-align: center;
+}
+
+.zum-skript {
+  font-size: 1.3rem;
+}

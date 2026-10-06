@@ -1,0 +1,59 @@
+meta:
+  name:
+    full: Bundeshandelsakademie und Bundeshandelsschule Eferding
+    short: HAK/HAS Eferding
+
+color:
+  palette:
+    hak-rot: "#CE1F2C"
+    # helleres Rot für den dunklen HTML-Modus (Schulrot hätte dort zu wenig Kontrast)
+    hak-rot-hell: "#F0616B"
+    darkly-grau: "#222222"
+    schwarz: "#000000"
+    weiss: "#FFFFFF"
+    red: hak-rot
+    black: schwarz
+    white: weiss
+  primary:
+    light: hak-rot
+    dark: hak-rot-hell
+  foreground:
+    light: schwarz
+    dark: weiss
+  background:
+    light: weiss
+    dark: darkly-grau
+
+typography:
+  fonts:
+    - family: Lato
+      source: google
+      weight: [400, 700]
+      style: [normal, italic]
+    - family: Oswald
+      source: google
+      weight: [500, 700]
+  base:
+    family: Lato
+    line-height: 1.5
+  headings:
+    family: Oswald
+    weight: 700
+    color: primary
+  link:
+    color: primary
+
+logo:
+  images:
+    hak-logo:
+      path: hak-logo.png
+      alt: Logo der HAK/HAS Eferding
+    hak-logo-dunkel:
+      path: hak-logo-dunkel.png
+      alt: Logo der HAK/HAS Eferding
+  small:
+    light: hak-logo
+    dark: hak-logo-dunkel
+  medium:
+    light: hak-logo
+    dark: hak-logo-dunkel

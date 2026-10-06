@@ -1,0 +1,24 @@
+/* Kasten für Buchbeispiele ({{< buch … >}}, siehe buch.lua).
+   Farben kommen aus _brand.yml: im HTML --bs-primary (hell/dunkel), auf den
+   Folien --brand-hak-rot. */
+
+.buchbeispiele {
+  --buch-farbe: var(--bs-primary, var(--brand-hak-rot));
+  margin: 1em 0;
+  padding: 0.5em 0.9em;
+  border-left: 4px solid var(--buch-farbe);
+  border-radius: 0.25rem;
+  background: color-mix(in srgb, var(--buch-farbe) 10%, transparent);
+}
+
+.buchbeispiele strong {
+  color: var(--buch-farbe);
+}
+
+.buchbeispiele svg {
+  width: 1.1em;
+  height: 1.1em;
+  margin-right: 0.4em;
+  vertical-align: -0.15em;
+  fill: var(--buch-farbe);
+}

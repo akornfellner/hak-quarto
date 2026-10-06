@@ -1,0 +1,96 @@
+# Gemeinsamer Workflow für alle Skripten (wiederverwendbar, workflow_call):
+# rendert das Skript als HTML und die Folien (revealjs) und veröffentlicht beides
+# auf GitHub Pages: Skript unter /, Folien unter /folien/ (Übersichtsseite).
+# Das PDF wird hier bewusst nicht erzeugt.
+# Lokal nachstellen (im Skript): just online
+#
+# Aufruf in der .github/workflows/pages.yml eines Skripts:
+#
+#   on:
+#     push:
+#       branches: [main]
+#     workflow_dispatch:
+#   permissions:
+#     contents: read
+#     pages: write
+#     id-token: write
+#   jobs:
+#     seite:
+#       uses: akornfellner/hak-quarto/.github/workflows/pages.yml@main
+#
+# Die Rechte muss das Skript vergeben, ein aufgerufener Workflow kann sie nicht
+# erweitern. Ausgecheckt und veröffentlicht wird das aufrufende Repo.
+#
+# Einmalig im Repository des Skripts einstellen:
+#   Settings → Pages → Build and deployment → Source: "GitHub Actions"
+#
+# Quarto- und uv-Version stehen nur hier (= lokale Version).
+
+name: Skript und Folien auf GitHub Pages veröffentlichen
+
+on:
+  workflow_call:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Nur eine Veröffentlichung gleichzeitig; laufende nicht abbrechen
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v7
+
+      - name: Quarto installieren
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: 1.10.18
+
+      - name: uv installieren
+        uses: astral-sh/setup-uv@v7
+        with:
+          version: 0.11.9
+
+      # legt .venv/ genau nach uv.lock an (ohne dev-Werkzeuge), damit
+      # QUARTO_PYTHON aus _environment passt; Python-Version aus .python-version
+      - name: Python-Pakete für die Grafiken installieren
+        run: uv sync --locked --no-dev
+
+      # hak-html (nicht html): nur so wirkt die Extension
+      - name: Skript als HTML rendern
+        run: quarto render --to hak-html
+
+      - name: Folien rendern
+        run: quarto render --profile folien
+
+      # erst nach dem Rendern des Skripts, sonst räumt Quarto _book/ wieder leer
+      - name: Folien nach _book/folien/ kopieren
+        run: |
+          mkdir -p _book/folien
+          cp -r _folien/. _book/folien/
+
+      - name: GitHub Pages vorbereiten
+        uses: actions/configure-pages@v6
+
+      - name: Skript und Folien hochladen
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: _book
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Auf GitHub Pages veröffentlichen
+        id: deployment
+        uses: actions/deploy-pages@v5

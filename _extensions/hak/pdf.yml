@@ -1,0 +1,34 @@
+# Einstellungen für das PDF (Format "typst" mit der Buchvorlage "orange-book").
+#
+# Wird in der _quarto.yml des Skripts eingebunden:
+#   metadata-files:
+#     - _extensions/hak/pdf.yml
+#
+# Warum nicht als Format "hak-typst" in _extension.yml? Quarto verwendet die
+# Buchvorlage nur beim reinen Format "typst". Ein eigenes Format würde sie
+# verdrängen (anderes Titelblatt, keine Kapitelseiten).
+#
+# Alle Pfade gelten ab dem Projektordner des Skripts, deshalb beginnen sie mit
+# _extensions/hak/. Sprache, Python, Kurzbefehle und Filter stehen für HTML und
+# Folien noch einmal in _extension.yml – Änderungen immer an beiden Stellen.
+
+format:
+  typst:
+    lang: de
+    number-depth: 2
+    # Python-Code (matplotlib-Grafiken) wird nie angezeigt, nur das Ergebnis
+    jupyter: python3
+    execute:
+      echo: false
+      warning: false
+    papersize: a4
+    toc: true
+    toc-depth: 2
+    include-before-body: _extensions/hak/typst-anpassungen.typ
+    shortcodes:
+      - _extensions/hak/buch.lua
+    filters:
+      - _extensions/hak/filters/pdf-nummerierung.lua
+      - _extensions/hak/filters/deutsche-anfuehrungszeichen.lua
+      - _extensions/hak/filters/intervallklammern.lua
+      - _extensions/hak/filters/dezimalkomma.lua

@@ -1,0 +1,23 @@
+```{python}
+#| output: asis
+# Übersichtsseite der Folien (im Internet unter …/folien/).
+# Wird in der folien-uebersicht.qmd des Skripts per include eingebunden; der
+# Code läuft im Projektordner des Skripts.
+# Sucht alle NN-kapitelname/folien-N.qmd und verlinkt sie mit Kapitelnummer und
+# Titel (aus dem YAML-Kopf der Foliendatei). Neue Kapitel erscheinen von selbst.
+import re
+from pathlib import Path
+
+folien = []
+for datei in Path(".").glob("[0-9]*/folien-*.qmd"):
+    nummer = int(re.search(r"folien-(\d+)$", datei.stem).group(1))
+    titel = re.search(r'^title:\s*"?(.*?)"?\s*$', datei.read_text(encoding="utf-8"), re.M)
+    folien.append((nummer, titel.group(1) if titel else datei.stem, datei.with_suffix(".html")))
+
+print("::: {.folien-uebersicht}")
+for nummer, titel, ziel in sorted(folien):
+    print(f'[[{nummer}]{{.kapitelnummer}} {titel}]({ziel.as_posix()})\n')
+print(":::")
+```
+
+[Zum Skript](../index.html){.zum-skript}

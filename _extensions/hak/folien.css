@@ -1,0 +1,12 @@
+/* Nur für die Folien. */
+
+/* Mehrere Formeln nebeneinander (siehe filters/folien-formelzeilen.lua):
+   Abstand wie \qquad, bei Platzmangel Umbruch in die nächste Zeile. */
+.reveal .formelzeilen {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  gap: 0.6em 2em;
+  margin: 1em 0;
+}

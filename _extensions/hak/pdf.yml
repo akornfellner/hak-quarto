@@ -28,6 +28,7 @@ format:
     shortcodes:
       - _extensions/hak/buch.lua
     filters:
+      - _extensions/hak/filters/folien-formelzeilen.lua
       - _extensions/hak/filters/pdf-nummerierung.lua
       - _extensions/hak/filters/deutsche-anfuehrungszeichen.lua
       - _extensions/hak/filters/intervallklammern.lua

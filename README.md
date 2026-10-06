@@ -53,11 +53,13 @@ In `_extensions/hak/`:
 | `_brand.yml` | Design: Schulfarben, Schriften, Logos (hell/dunkel) |
 | `hak-logo.png`, `hak-logo-dunkel.png` | Logo für hellen und dunklen Modus |
 | `filters/dezimalkomma.lua` | Dezimalkomma im PDF ohne Abstand |
+| `filters/folien-formelzeilen.lua` | Formeln mit `\qquad` auf den Folien bei Platzmangel umbrechen |
 | `filters/intervallklammern.lua` | Intervalle wie `]2; 5[` richtig setzen |
 | `filters/deutsche-anfuehrungszeichen.lua` | „…“ in allen Formaten |
 | `filters/pdf-nummerierung.lua` | im PDF nur bis 1.1 nummerieren |
 | `buch.lua` | Kurzbefehl `{{< buch 1.23 1.24 >}}` für Übungsbeispiele |
 | `buchbeispiele.css` | Aussehen der Übungsbeispiel-Kästen in HTML und Folien |
+| `folien.css` | Aussehen nur für die Folien (umbrechende Formelzeilen) |
 | `typst-anpassungen.typ` | Anpassungen der PDF-Vorlage, Kasten für Übungsbeispiele im PDF |
 | `_folien-uebersicht.qmd` | Inhalt der Übersichtsseite der Folien (sucht die Kapitel selbst) |
 | `folien-uebersicht.css` | Aussehen der Übersichtsseite |

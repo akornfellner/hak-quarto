@@ -40,6 +40,7 @@ contributes:
       shortcodes:
         - buch.lua
       filters:
+        - filters/folien-formelzeilen.lua
         - filters/pdf-nummerierung.lua
         - filters/deutsche-anfuehrungszeichen.lua
         - filters/intervallklammern.lua
@@ -55,4 +56,4 @@ contributes:
 
     revealjs:
       slide-level: 4
-      css: buchbeispiele.css
+      css: [buchbeispiele.css, folien.css]

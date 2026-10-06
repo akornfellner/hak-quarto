@@ -125,6 +125,12 @@ eine mitcommittete Kopie in `_extensions/hak/`.
   ```
 - Pro Folie höchstens Definition + Formel + Abbildung, höchstens eine
   Zahlengerade. Beispiele bei Bedarf auf eine eigene Folie.
+- Mehrere Formeln nebeneinander in einer abgesetzten Formel mit `\qquad`
+  trennen. Auf den Folien zerlegt `filters/folien-formelzeilen.lua` die Formel an
+  jedem `\qquad` und bricht bei Platzmangel dort um (Aussehen in `folien.css`),
+  im Skript bleibt alles in einer Zeile. Deshalb keine kleinere Schrift und
+  keine händischen Umbrüche. Ist eine einzelne Formel zu breit, sie kürzen oder
+  auf zwei Formeln aufteilen.
 
 ## Ordner- und Dateistruktur eines Skripts
 

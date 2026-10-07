@@ -175,9 +175,6 @@ CLAUDE.md                Klasse, Adressen, Einbindung dieser Regeln
 
 ## Inhaltliche Bausteine
 
-- **Jedes Thema beginnt mit einem Einführungsbeispiel** aus dem Alltag der
-  Schülerinnen und Schüler: normaler Text `**Einführungsbeispiel:** …` in
-  `content-hidden when-format="revealjs"`, kein Callout.
 - Definitionen: `::: {.callout-note title="Definition: Titel"}`. `callout-note` ist
   **nur** für Definitionen.
 - Beispiele: Absatz `**Beispiel:** …` (bei reiner Formel danach Leerzeile + `$$…$$`).
